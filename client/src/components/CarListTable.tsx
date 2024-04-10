@@ -66,11 +66,16 @@ export default function CarListTable({ currenetRow, setSelectedRow }: Props) {
     })
   }
   useEffect(getAllCar, [])
-
+  console.log(currenetRow)
   return (
     <>
       <Space style={{ margin: '1em 0' }}>
-        <Button onClick={() => rowResetHandler()}>Reset</Button>
+        <Button
+          onClick={() => rowResetHandler()}
+          disabled={Object.keys(currenetRow).length === 0}
+        >
+          Reset
+        </Button>
       </Space>
       <Table
         rowSelection={{

@@ -4,9 +4,14 @@ import { FloatButton, Tooltip } from 'antd'
 type Props = {
   selectedRow: Car
   setOpenModal: Function
+  setOpenDeleteModal: Function
 }
 
-export default function FloatingAction({ selectedRow, setOpenModal }: Props) {
+export default function FloatingAction({
+  selectedRow,
+  setOpenModal,
+  setOpenDeleteModal,
+}: Props) {
   const clickAddHanlder = () => {
     setOpenModal({
       open: true,
@@ -27,7 +32,10 @@ export default function FloatingAction({ selectedRow, setOpenModal }: Props) {
         {Object.keys(selectedRow).length != 0 && (
           <>
             <Tooltip placement="left" title={'Delete'}>
-              <FloatButton icon={<DeleteOutlined />} />
+              <FloatButton
+                onClick={() => setOpenDeleteModal(true)}
+                icon={<DeleteOutlined />}
+              />
             </Tooltip>
             <Tooltip placement="left" title={'Edit'}>
               <FloatButton onClick={clickEditHanlder} icon={<EditOutlined />} />

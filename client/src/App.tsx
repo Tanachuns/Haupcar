@@ -4,10 +4,12 @@ import CarListTable from './components/CarListTable'
 import { useState } from 'react'
 import FloatingAction from './components/FloatingAction'
 import FormModal from './components/FormModal'
+import DeleteModal from './components/DeleteModal'
 
 function App() {
   const [selectedRow, setSelectedRow] = useState({} as Car)
   const [openModal, setOpenModal] = useState({} as ModalProp)
+  const [openDeleteModal, setOpenDeleteModal] = useState(false)
   console.log(selectedRow)
   return (
     <>
@@ -48,7 +50,16 @@ function App() {
         setOpen={setOpenModal}
         refCar={selectedRow}
       />
-      <FloatingAction selectedRow={selectedRow} setOpenModal={setOpenModal} />
+      <DeleteModal
+        open={openDeleteModal}
+        setOpen={setOpenDeleteModal}
+        refCar={selectedRow}
+      />
+      <FloatingAction
+        selectedRow={selectedRow}
+        setOpenModal={setOpenModal}
+        setOpenDeleteModal={setOpenDeleteModal}
+      />
     </>
   )
 }
