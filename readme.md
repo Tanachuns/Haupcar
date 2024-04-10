@@ -51,6 +51,20 @@
 
 **Client**
 
-## Ref
+    VITE_API_URL
 
-[CAR LIST API](https://carapi.app/)
+## Install
+
+**Sever**
+
+    cd server
+    npm i
+    npm run dev
+
+\*nodemon is required.
+
+**Client**
+
+    cd client
+    npm i
+    npm run dev

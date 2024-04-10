@@ -1,5 +1,4 @@
 import { Modal } from 'antd'
-import React from 'react'
 import AddForm from './AddForm'
 import EditForm from './EditForm'
 
@@ -10,11 +9,11 @@ export default function FormModal({
   setOpen,
   refCar,
 }: ModalProp) {
-  const handleOk = (e: React.MouseEvent<HTMLElement>) => {
+  const handleOk = () => {
     setOpen(false)
   }
 
-  const handleCancel = (e: React.MouseEvent<HTMLElement>) => {
+  const handleCancel = () => {
     setOpen(false)
   }
   return (
