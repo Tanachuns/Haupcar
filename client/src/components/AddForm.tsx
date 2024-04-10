@@ -9,14 +9,15 @@ export default function AddForm({}: Props) {
   const [messageApi, contextHolder] = message.useMessage()
 
   const success = () => {
-    setTimeout(() => {
-      messageApi.open({
+    messageApi
+      .open({
         type: 'success',
         content: 'เพิ่มลงฐานข้อมูลสำเร็จ!',
         duration: 2,
       })
-    }, 1000)
-    window.location.reload()
+      .then(() => {
+        window.location.reload()
+      })
   }
 
   const error = (msg: string) => {
@@ -55,21 +56,21 @@ export default function AddForm({}: Props) {
         <Form.Item<Car>
           name="registerNo"
           label="เลขทะเบียน"
-          rules={[{ required: true }]}
+          rules={[{ required: true, message: 'กรุณาระบุ เลขทะเบียน' }]}
         >
           <Input placeholder="Register No." />
         </Form.Item>
         <Form.Item<Car>
           name="brand"
           label="ยี่ห้อรถยนต์"
-          rules={[{ required: true }]}
+          rules={[{ required: true, message: 'กรุณาระบุ ยี่ห้อรถยนต์' }]}
         >
           <Input placeholder="Brands" />
         </Form.Item>
         <Form.Item<Car>
           name="model"
           label="รุ่นรถยนต์"
-          rules={[{ required: true }]}
+          rules={[{ required: true, message: 'กรุณาระบุ รุ่นรถยนต์' }]}
         >
           <Input placeholder="Model" />
         </Form.Item>
