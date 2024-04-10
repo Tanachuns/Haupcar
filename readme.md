@@ -41,6 +41,12 @@
 
 ![wireframe](/wireframe.jpg)
 
+## .env
+
+    POSTGRES_PRISMA_URL
+    POSTGRES_URL_NON_POOLING
+    PORT
+
 ## Ref
 
 [CAR LIST API](https://carapi.app/)
