@@ -2,10 +2,13 @@ const Koa = require('koa')
 const Router = require('@koa/router')
 const { PrismaClient } = require('@prisma/client')
 const { koaBody } = require('koa-body')
+require('dotenv').config()
 
 const app = new Koa()
 const prisma = new PrismaClient()
-const router = new Router()
+const router = new Router({
+  prefix: '/api',
+})
 app.use(koaBody())
 
 //Create
@@ -96,9 +99,11 @@ router.del('/car/:id', async (ctx) => {
         id,
       },
     })
+
     if (!referenceCar) {
       ctx.status = 404
       ctx.body = { error: 'Reference Car Not Found.' }
+      return
     }
 
     const deletedCar = await prisma.car.delete({ where: { id } })
@@ -111,7 +116,7 @@ router.del('/car/:id', async (ctx) => {
   }
 })
 
-const PORT = 3000
+const PORT = process.env.PORT
 app.use(router.routes()).use(router.allowedMethods())
 app.listen(PORT)
 console.log('App listening on port:' + PORT)
