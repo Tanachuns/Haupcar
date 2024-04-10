@@ -88,6 +88,28 @@ router.put('/car/:id', async (ctx) => {
   }
 })
 //DELETE
+router.del('/car/:id', async (ctx) => {
+  try {
+    const id = Number(ctx.params.id)
+    const referenceCar = await prisma.car.findUnique({
+      where: {
+        id,
+      },
+    })
+    if (!referenceCar) {
+      ctx.status = 404
+      ctx.body = { error: 'Reference Car Not Found.' }
+    }
+
+    const deletedCar = await prisma.car.delete({ where: { id } })
+    ctx.status = 204
+    ctx.body = 'Deleted'
+  } catch (ex) {
+    ctx.status = 500
+    ctx.body = { error: 'Internal Server Error.' }
+    console.error(ex)
+  }
+})
 
 const PORT = 3000
 app.use(router.routes()).use(router.allowedMethods())

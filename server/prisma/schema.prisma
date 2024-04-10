@@ -20,4 +20,6 @@ model Car {
   brand String
   model String
   notes String
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
 }
