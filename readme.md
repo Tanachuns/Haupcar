@@ -35,6 +35,7 @@
 - [React](https://react.dev/)
 - [Ant Design](https://ant.design/)
 - [Kao](https://koajs.com/)
+- [PrismaORM](https://www.prisma.io/)
 - [Postgres](https://www.postgresql.org/)
 
 ## Wireframe
