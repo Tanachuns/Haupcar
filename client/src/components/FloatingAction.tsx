@@ -10,8 +10,15 @@ export default function FloatingAction({ selectedRow, setOpenModal }: Props) {
   const clickAddHanlder = () => {
     setOpenModal({
       open: true,
-      title: 'Add Car',
+      title: 'เพิ่มข้อมูล',
       mode: 'ADD',
+    })
+  }
+  const clickEditHanlder = () => {
+    setOpenModal({
+      open: true,
+      title: 'แก้ไขข้อมูล',
+      mode: 'EDIT',
     })
   }
   return (
@@ -23,7 +30,7 @@ export default function FloatingAction({ selectedRow, setOpenModal }: Props) {
               <FloatButton icon={<DeleteOutlined />} />
             </Tooltip>
             <Tooltip placement="left" title={'Edit'}>
-              <FloatButton icon={<EditOutlined />} />
+              <FloatButton onClick={clickEditHanlder} icon={<EditOutlined />} />
             </Tooltip>
           </>
         )}

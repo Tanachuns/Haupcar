@@ -46,6 +46,7 @@ function App() {
         mode={openModal.mode}
         open={openModal.open}
         setOpen={setOpenModal}
+        refCar={selectedRow}
       />
       <FloatingAction selectedRow={selectedRow} setOpenModal={setOpenModal} />
     </>
