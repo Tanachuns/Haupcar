@@ -31,12 +31,15 @@ function App() {
                 padding: '0 24px',
               }}
             >
-              <CarListTable setSelectedRow={setSelectedRow} />
+              <CarListTable
+                currenetRow={selectedRow}
+                setSelectedRow={setSelectedRow}
+              />
             </Content>
           </Layout>
         </Content>
       </Layout>
-      <FloatingAction />
+      <FloatingAction selectedRow={selectedRow} />
     </>
   )
 }

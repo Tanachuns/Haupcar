@@ -1,9 +1,11 @@
-import { Table, TableColumnsType } from 'antd'
+import { Button, Space, Table, TableColumnsType } from 'antd'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { getDateFormat } from '../services/utils'
+import { Key } from 'antd/es/table/interface'
 
 type Props = {
+  currenetRow: Car
   setSelectedRow: Function
 }
 
@@ -48,12 +50,16 @@ const columns: TableColumnsType<Car> = [
   },
 ]
 
-export default function CarListTable({ setSelectedRow }: Props) {
+export default function CarListTable({ currenetRow, setSelectedRow }: Props) {
   const [dataSource, setDataSource] = useState([])
 
-  const rowSelectedHandler = (_: React.Key[], selectedRow: Car[]) => {
-    setSelectedRow(selectedRow[0])
+  const rowSelectedHandler = (record: Car) => {
+    setSelectedRow(record)
   }
+  const rowResetHandler = () => {
+    setSelectedRow({})
+  }
+
   const getAllCar = () => {
     axios.get('http://localhost:8080/api/car').then((res: any) => {
       setDataSource(res.data)
@@ -63,10 +69,14 @@ export default function CarListTable({ setSelectedRow }: Props) {
 
   return (
     <>
+      <Space style={{ margin: '1em 0' }}>
+        <Button onClick={() => rowResetHandler()}>Reset</Button>
+      </Space>
       <Table
         rowSelection={{
+          selectedRowKeys: [currenetRow.id] as Key[],
           type: 'radio',
-          onChange: rowSelectedHandler,
+          onSelect: rowSelectedHandler,
         }}
         columns={columns}
         dataSource={dataSource}

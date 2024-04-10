@@ -1,22 +1,27 @@
-import {
-  DeleteOutlined,
-  EditOutlined,
-  PlusOutlined,
-  QuestionCircleOutlined,
-  SyncOutlined,
-} from '@ant-design/icons'
-import { FloatButton } from 'antd'
-import React from 'react'
+import { DeleteOutlined, EditOutlined, PlusOutlined } from '@ant-design/icons'
+import { FloatButton, Tooltip } from 'antd'
 
-type Props = {}
+type Props = {
+  selectedRow: Car
+}
 
-export default function FloatingAction({}: Props) {
+export default function FloatingAction({ selectedRow }: Props) {
   return (
     <>
       <FloatButton.Group shape="circle" style={{ right: 24 }}>
-        <FloatButton icon={<DeleteOutlined />} />
-        <FloatButton icon={<EditOutlined />} />
-        <FloatButton icon={<PlusOutlined />} />
+        {Object.keys(selectedRow).length != 0 && (
+          <>
+            <Tooltip placement="left" title={'Delete'}>
+              <FloatButton icon={<DeleteOutlined />} />
+            </Tooltip>
+            <Tooltip placement="left" title={'Edit'}>
+              <FloatButton icon={<EditOutlined />} />
+            </Tooltip>
+          </>
+        )}
+        <Tooltip placement="left" title={'Add'}>
+          <FloatButton icon={<PlusOutlined />} />
+        </Tooltip>
       </FloatButton.Group>
     </>
   )
