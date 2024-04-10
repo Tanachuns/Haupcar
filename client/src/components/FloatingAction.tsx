@@ -3,28 +3,22 @@ import { FloatButton, Tooltip } from 'antd'
 
 type Props = {
   selectedRow: Car
-  setOpenModal: Function
+  setOpenAddModal: Function
+  setOpenEditModal: Function
   setOpenDeleteModal: Function
 }
 
 export default function FloatingAction({
   selectedRow,
-  setOpenModal,
+  setOpenAddModal,
+  setOpenEditModal,
   setOpenDeleteModal,
 }: Props) {
   const clickAddHanlder = () => {
-    setOpenModal({
-      open: true,
-      title: 'เพิ่มข้อมูล',
-      mode: 'ADD',
-    })
+    setOpenAddModal(true)
   }
   const clickEditHanlder = () => {
-    setOpenModal({
-      open: true,
-      title: 'แก้ไขข้อมูล',
-      mode: 'EDIT',
-    })
+    setOpenEditModal(true)
   }
   return (
     <>

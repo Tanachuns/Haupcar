@@ -3,13 +3,16 @@ import { Header, Content } from 'antd/es/layout/layout'
 import CarListTable from './components/CarListTable'
 import { useState } from 'react'
 import FloatingAction from './components/FloatingAction'
-import FormModal from './components/FormModal'
 import DeleteModal from './components/DeleteModal'
+import AddForm from './components/AddForm'
+import EditForm from './components/EditForm'
 
 function App() {
   const [selectedRow, setSelectedRow] = useState({} as Car)
-  const [openModal, setOpenModal] = useState({} as ModalProp)
+  const [openAddModal, setOpenAddModal] = useState(false)
+  const [openEditModal, setOpenEditModal] = useState(false)
   const [openDeleteModal, setOpenDeleteModal] = useState(false)
+  console.log(selectedRow)
   return (
     <>
       <Layout style={{ minHeight: '100vh' }}>
@@ -42,11 +45,10 @@ function App() {
           </Layout>
         </Content>
       </Layout>
-      <FormModal
-        title={openModal.title}
-        mode={openModal.mode}
-        open={openModal.open}
-        setOpen={setOpenModal}
+      <AddForm open={openAddModal} setOpen={setOpenAddModal} />
+      <EditForm
+        open={openEditModal}
+        setOpen={setOpenEditModal}
         refCar={selectedRow}
       />
       <DeleteModal
@@ -56,7 +58,8 @@ function App() {
       />
       <FloatingAction
         selectedRow={selectedRow}
-        setOpenModal={setOpenModal}
+        setOpenAddModal={setOpenAddModal}
+        setOpenEditModal={setOpenEditModal}
         setOpenDeleteModal={setOpenDeleteModal}
       />
     </>
