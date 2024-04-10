@@ -39,7 +39,7 @@
 
 ## Wireframe
 
-![wireframe](./wireframe.jpg)
+![wireframe](/wireframe.jpg)
 
 ## Ref
 
