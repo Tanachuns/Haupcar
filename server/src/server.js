@@ -52,12 +52,41 @@ router.get('/car', async (ctx) => {
     }
   } catch (ex) {
     ctx.status = 500
-    ctx.body = 'Internal Server Error.'
+    ctx.body = { error: 'Internal Server Error.' }
     console.error(ex)
   }
 })
 //ReadSingle
+
 //Update
+router.put('/car/:id', async (ctx) => {
+  try {
+    const id = Number(ctx.params.id)
+    const reqCar = ctx.request.body
+    if (!reqCar || !reqCar.registerNo) {
+      ctx.status = 400
+      ctx.body = { error: 'Bad Request.' }
+      return
+    }
+    const referenceCar = await prisma.car.findUnique({
+      where: {
+        id,
+      },
+    })
+    if (!referenceCar) {
+      ctx.status = 404
+      ctx.body = { error: 'Reference Car Not Found.' }
+    }
+
+    const updatedCar = await prisma.car.update({ data: reqCar, where: { id } })
+    ctx.status = 204
+    ctx.body = updatedCar
+  } catch (ex) {
+    ctx.status = 500
+    ctx.body = { error: 'Internal Server Error.' }
+    console.error(ex)
+  }
+})
 //DELETE
 
 const PORT = 3000
