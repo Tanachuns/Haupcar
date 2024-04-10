@@ -2,6 +2,7 @@ const Koa = require('koa')
 const Router = require('@koa/router')
 const { PrismaClient } = require('@prisma/client')
 const { koaBody } = require('koa-body')
+const cors = require('koa-cors')
 require('dotenv').config()
 
 const app = new Koa()
@@ -10,6 +11,7 @@ const router = new Router({
   prefix: '/api',
 })
 app.use(koaBody())
+app.use(cors())
 
 //Create
 router.post('/car', async (ctx) => {
