@@ -3,9 +3,11 @@ import { Header, Content } from 'antd/es/layout/layout'
 import CarListTable from './components/CarListTable'
 import { useState } from 'react'
 import FloatingAction from './components/FloatingAction'
+import FormModal from './components/FormModal'
 
 function App() {
   const [selectedRow, setSelectedRow] = useState({} as Car)
+  const [openModal, setOpenModal] = useState({} as ModalProp)
   console.log(selectedRow)
   return (
     <>
@@ -39,7 +41,13 @@ function App() {
           </Layout>
         </Content>
       </Layout>
-      <FloatingAction selectedRow={selectedRow} />
+      <FormModal
+        title={openModal.title}
+        mode={openModal.mode}
+        open={openModal.open}
+        setOpen={setOpenModal}
+      />
+      <FloatingAction selectedRow={selectedRow} setOpenModal={setOpenModal} />
     </>
   )
 }

@@ -1,6 +1,6 @@
 import { Button, Space, Table, TableColumnsType } from 'antd'
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { getDateFormat } from '../services/utils'
 import { Key } from 'antd/es/table/interface'
 
@@ -61,7 +61,7 @@ export default function CarListTable({ currenetRow, setSelectedRow }: Props) {
   }
 
   const getAllCar = () => {
-    axios.get('http://localhost:8080/api/car').then((res: any) => {
+    axios.get(import.meta.env.VITE_API_URL + '/api/car').then((res: any) => {
       setDataSource(res.data)
     })
   }
@@ -81,6 +81,7 @@ export default function CarListTable({ currenetRow, setSelectedRow }: Props) {
         columns={columns}
         dataSource={dataSource}
         rowKey="id"
+        loading={dataSource.length == 0}
       />
     </>
   )

@@ -19,7 +19,7 @@ model Car {
   registerNo String 
   brand String
   model String
-  notes String
+  notes String?
   createdAt        DateTime           @default(now())
   updatedAt        DateTime           @updatedAt
 }

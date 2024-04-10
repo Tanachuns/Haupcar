@@ -35,7 +35,7 @@ router.post('/car', async (ctx) => {
       ctx.status = 201
       ctx.body = newCar
     } else {
-      ctx.status = 400
+      ctx.status = 409
       ctx.body = { error: 'Register No. Already Exist.' }
     }
   } catch (ex) {

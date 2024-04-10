@@ -3,9 +3,17 @@ import { FloatButton, Tooltip } from 'antd'
 
 type Props = {
   selectedRow: Car
+  setOpenModal: Function
 }
 
-export default function FloatingAction({ selectedRow }: Props) {
+export default function FloatingAction({ selectedRow, setOpenModal }: Props) {
+  const clickAddHanlder = () => {
+    setOpenModal({
+      open: true,
+      title: 'Add Car',
+      mode: 'ADD',
+    })
+  }
   return (
     <>
       <FloatButton.Group shape="circle" style={{ right: 24 }}>
@@ -20,7 +28,7 @@ export default function FloatingAction({ selectedRow }: Props) {
           </>
         )}
         <Tooltip placement="left" title={'Add'}>
-          <FloatButton icon={<PlusOutlined />} />
+          <FloatButton onClick={clickAddHanlder} icon={<PlusOutlined />} />
         </Tooltip>
       </FloatButton.Group>
     </>
