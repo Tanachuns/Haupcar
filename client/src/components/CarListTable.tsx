@@ -66,7 +66,6 @@ export default function CarListTable({ currenetRow, setSelectedRow }: Props) {
     })
   }
   useEffect(getAllCar, [])
-  console.log(currenetRow)
   return (
     <>
       <Space style={{ margin: '1em 0' }}>

@@ -1,4 +1,4 @@
-import { Button, Modal } from 'antd'
+import { Modal } from 'antd'
 import React from 'react'
 import AddForm from './AddForm'
 import EditForm from './EditForm'
@@ -11,15 +11,12 @@ export default function FormModal({
   refCar,
 }: ModalProp) {
   const handleOk = (e: React.MouseEvent<HTMLElement>) => {
-    console.log(e)
     setOpen(false)
   }
 
   const handleCancel = (e: React.MouseEvent<HTMLElement>) => {
-    console.log(e)
     setOpen(false)
   }
-  console.log(refCar)
   return (
     <>
       <Modal

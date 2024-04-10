@@ -10,7 +10,6 @@ function App() {
   const [selectedRow, setSelectedRow] = useState({} as Car)
   const [openModal, setOpenModal] = useState({} as ModalProp)
   const [openDeleteModal, setOpenDeleteModal] = useState(false)
-  console.log(selectedRow)
   return (
     <>
       <Layout style={{ minHeight: '100vh' }}>

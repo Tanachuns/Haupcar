@@ -38,7 +38,6 @@ export default function DeleteModal({ open, setOpen, refCar }: Props) {
         axios
           .delete(import.meta.env.VITE_API_URL + '/api/car/' + refCar.id)
           .then((res) => {
-            console.log(res)
             if (res.status == 204) {
               success()
             }

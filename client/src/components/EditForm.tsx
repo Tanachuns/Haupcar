@@ -39,7 +39,6 @@ export default function EditForm({ refCar }: Props) {
         axios
           .put(import.meta.env.VITE_API_URL + '/api/car/' + refCar.id, values)
           .then((res) => {
-            console.log(res)
             if (res.status == 204) {
               success()
             }
