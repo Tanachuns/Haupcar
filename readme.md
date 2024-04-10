@@ -61,8 +61,6 @@
     npm i
     npm run dev
 
-\*nodemon is required.
-
 **Client**
 
     cd client
