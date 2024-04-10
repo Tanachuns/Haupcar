@@ -33,7 +33,7 @@
 ## Stacks
 
 - [React](https://react.dev/)
-- Ant Design
+- [Ant Design](https://ant.design/)
 - [Kao](https://koajs.com/)
 - [Postgres](https://www.postgresql.org/)
 
