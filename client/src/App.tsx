@@ -2,6 +2,7 @@ import { Layout } from 'antd'
 import { Header, Content } from 'antd/es/layout/layout'
 import CarListTable from './components/CarListTable'
 import { useState } from 'react'
+import FloatingAction from './components/FloatingAction'
 
 function App() {
   const [selectedRow, setSelectedRow] = useState({} as Car)
@@ -30,14 +31,12 @@ function App() {
                 padding: '0 24px',
               }}
             >
-              <CarListTable
-                selectedRow={selectedRow}
-                setSelectedRow={setSelectedRow}
-              />
+              <CarListTable setSelectedRow={setSelectedRow} />
             </Content>
           </Layout>
         </Content>
       </Layout>
+      <FloatingAction />
     </>
   )
 }

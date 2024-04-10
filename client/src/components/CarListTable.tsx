@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react'
 import { getDateFormat } from '../services/utils'
 
 type Props = {
-  selectedRow: Car
   setSelectedRow: Function
 }
 
@@ -49,13 +48,10 @@ const columns: TableColumnsType<Car> = [
   },
 ]
 
-export default function CarListTable({ selectedRow, setSelectedRow }: Props) {
+export default function CarListTable({ setSelectedRow }: Props) {
   const [dataSource, setDataSource] = useState([])
 
-  const rowSelectedHandler = (
-    selectedRowKeys: React.Key[],
-    selectedRow: Car[]
-  ) => {
+  const rowSelectedHandler = (_: React.Key[], selectedRow: Car[]) => {
     setSelectedRow(selectedRow[0])
   }
   const getAllCar = () => {
