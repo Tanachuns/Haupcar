@@ -43,9 +43,13 @@
 
 ## .env
 
+**Sever**
+
     POSTGRES_PRISMA_URL
     POSTGRES_URL_NON_POOLING
     PORT
+
+**Client**
 
 ## Ref
 
